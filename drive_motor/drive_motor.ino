@@ -59,9 +59,10 @@ void loop()
       home_switch = digitalRead(I0_8);
       end_switch = digitalRead(I0_7);
       
-      if(home_switch == HIGH || end_switch == HIGH)
+      if(home_switch == LOW || end_switch == LOW)
       {
-        digitalWrite(enPin,HIGH);    
+        digitalWrite(enPin,HIGH); 
+        break;   
       }
       if(task == 1)
       {
@@ -93,7 +94,21 @@ void loop()
         pulseCount++;
         pulseCountDec++;
       }
-    } 
+    }
+
+    //while(placeSignal == LOW)
+    //{
+    //  Serial.println("WAITING FOR SIGNAL");
+    //}
+    //if(placeSignal == HIGH)
+    //{
+    //  digitalWrite(releaseSpring, HIGH);
+    //  delay(timeForSpringToFallIntoPlace);
+    //}
+    // MOVE TO NEXT PLACEMENT POINT 
+
+      
+    
     Serial.println(pulseCountAcc);
     Serial.println(pulseCountDec);
     Serial.println(pulseCount); 
